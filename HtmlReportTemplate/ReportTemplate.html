@@ -1,0 +1,35 @@
+<head>
+	<script id='cooddyResults' type='text/json'>{"problems":[]}</script>
+    <script>var rhsServers = [];</script>
+	<script src="Deps/prism.js"></script>
+	<link rel="stylesheet" href="Deps/prism.css">
+	<script src="helpers.js"></script>
+	<script src="codeViewBuilder.js"></script>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body class="stop-scrolling">
+<div class="container stop-scrolling" id="mainContainer"></div>
+<script>
+	var zi=r=>{var f,o,t,e,i=r=>new Uint16Array(r),l=()=>({t:i(16),r:i(288)}),n=0,a=()=>n<r.length?r[n++].codePointAt(0):0,v=0,h=0,u=[],s=r=>{u.push(String.fromCharCode(r))},d=l(),w=l(),g=l(),p=l(),A=i(30),C=i(30),c=i(30),j=i(30),m=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],y=l(),z=i(320),P=(r,t,e,i)=>{for(r.fill(0),f=0;f<30-e;++f)r[f+e]=f/e|0;for(o=i,f=0;f<30;++f)t[f]=o,o+=1<<r[f]},S=i(16),U=(r,t,e,i)=>{for(r.t.fill(0),f=0;f<i;++f)r.t[t[e+f]]++;for(r.t[0]=0,o=0,f=0;f<16;++f)S[f]=o,o+=r.t[f];for(f=0;f<i;++f)t[e+f]&&(r.r[S[t[e+f]]++]=f)},b=()=>{h--||(v=a(),h=7);var r=1&v;return v>>>=1,r},k=(r,f)=>{if(!r)return f;for(;h<24;)v|=a()<<h,h+=8;var o=v&65535>>>16-r;return v>>>=r,h-=r,o+f},q=r=>{for(;h<24;)v|=a()<<h,h+=8;var f=0,o=0,t=0,e=v;do{o=2*o+(1&e),e>>>=1,++t,f+=r.t[t],o-=r.t[t]}while(o>=0);return v=e,h-=t,r.r[f+o]},x=(r,f)=>{var o,t,e,i,l,n,a,v;for(o=k(5,257),t=k(5,1),e=k(4,4),z.fill(0),i=0;i<e;++i)z[m[i]]=k(3,0);for(U(y,z,0,19),l=0;l<o+t;)if(16==(a=q(y)))for(v=z[l-1],n=k(2,3);n;--n)z[l++]=v;else if(17==a)for(n=k(3,3);n;--n)z[l++]=0;else if(18==a)for(n=k(7,11);n;--n)z[l++]=0;else z[l++]=a;U(r,z,0,o),U(f,z,o,t)},B=(r,f)=>{for(;;){var o,t,e,i,l=q(r);if(256===l)return;if(l<256)s(l);else for(o=k(A[l-=257],C[l]),t=q(f),i=e=u.length-k(c[t],j[t]);i<e+o;++i)u.push(u[i])}},D=()=>{for(var r;h>8;)n--,h-=8;if((r=a()+256*a())!==(65535&~(a()+256*a())))throw-3;for(var f=r;f;--f)s(a());h=0};((r,o)=>{for(r.t.fill(0),r.t[7]=24,r.t[8]=152,r.t[9]=112,f=0;f<24;++f)r.r[f]=256+f;for(f=0;f<144;++f)r.r[24+f]=f;for(f=0;f<8;++f)r.r[168+f]=280+f;for(f=0;f<112;++f)r.r[176+f]=144+f;for(o.t.fill(0),o.t[5]=32,f=0;f<32;++f)o.r[f]=f})(g,p),P(A,C,4,3),P(c,j,2,1),A[28]=0,C[28]=258;do{t=b(),0==(e=k(2,0))?D():1==e?B(g,p):(x(d,w),B(d,w))}while(!t);return u.join("")};
+decode=s=>zi(window.atob(s).slice(2))
+</script>
+<script src="Deps/FileSaver.min.js"></script>
+<script src="Deps/tabulator.min.js"></script>
+<script src="Deps/jszip.min.js"></script>
+<link rel="stylesheet" href="Deps/tabulator-simple.min.css">
+<script src="tabulatorInit.js"></script>
+<script src="main.js"></script>
+<script>
+var sourceHtmlText = document.documentElement.outerHTML;
+document.querySelectorAll(".packedStyle").forEach(s => {
+    const style = document.createElement('style');
+    document.head.appendChild(style);
+    style.appendChild(document.createTextNode(decode(s.text)));
+});
+document.querySelectorAll(".packed").forEach(s => {
+    const script = document.createElement('script');
+    script.text = decode(s.text);
+    document.head.appendChild(script);
+});
+</script>
+</body>
